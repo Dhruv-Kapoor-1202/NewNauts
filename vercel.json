@@ -4,12 +4,12 @@
     "client": {
       "root": "client",
       "framework": "vite",
-      "installCommand": "npm install --include=dev"
+      "installCommand": "npm install --include=dev --ignore-scripts && npm run build -w @commander/engine"
     },
     "server": {
       "root": "server",
       "framework": "express",
-      "installCommand": "npm install --include=dev"
+      "installCommand": "npm install --include=dev --ignore-scripts && npm run build -w @commander/engine"
     }
   },
   "rewrites": [
