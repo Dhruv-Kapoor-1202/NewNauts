@@ -4,12 +4,12 @@
     "client": {
       "root": "client",
       "framework": "vite",
-      "installCommand": "npm install --include=dev --ignore-scripts; pwd; echo NODE_ENV=$NODE_ENV omit=$(npm config get omit) include=$(npm config get include) prod=$(npm config get production); ls node_modules | wc -l; ls node_modules/.bin | head -30; ls node_modules/typescript | head -3; npm run build -w @commander/engine"
+      "installCommand": "cd .. && npm install --include=dev --ignore-scripts && npm run build -w @commander/engine"
     },
     "server": {
       "root": "server",
       "framework": "express",
-      "installCommand": "npm install --include=dev --ignore-scripts; pwd; echo NODE_ENV=$NODE_ENV omit=$(npm config get omit) include=$(npm config get include) prod=$(npm config get production); ls node_modules | wc -l; ls node_modules/.bin | head -30; ls node_modules/typescript | head -3; npm run build -w @commander/engine"
+      "installCommand": "cd .. && npm install --include=dev --ignore-scripts && npm run build -w @commander/engine"
     }
   },
   "rewrites": [
