@@ -69,7 +69,9 @@ function parseOrigins(raw: string): string[] {
  * @throws ConfigError when a variable is invalid.
  */
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
-  const parsed = EnvSchema.safeParse(env);
+  // Vercel's filesystem is read-only, so default to in-memory storage there unless overridden.
+  const defaults = env.VERCEL ? { STORAGE_DRIVER: 'memory' } : {};
+  const parsed = EnvSchema.safeParse({ ...defaults, ...env });
   if (!parsed.success) {
     const problems = parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`);
     throw new ConfigError(`Invalid environment configuration: ${problems.join('; ')}`);
